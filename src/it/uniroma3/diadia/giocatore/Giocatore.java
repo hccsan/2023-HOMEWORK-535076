@@ -26,7 +26,4 @@ public class Giocatore {
 	public void setCfu(int cfu) {
 		this.cfu = cfu;
 	}
-	
-	
-
 }

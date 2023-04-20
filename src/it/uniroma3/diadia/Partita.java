@@ -32,6 +32,10 @@ public class Partita {
 	public boolean vinta() {
 		return this.getLabirinto().getStanzaCorrente()== this.getLabirinto().getStanzaVincente();
 	}
+	
+	public boolean giocatoreIsVivo() {
+		return this.getGiocatore().getCfu()>0;
+	}
 
 	/**
 	 * Restituisce vero se e solo se la partita e' finita
@@ -66,5 +70,10 @@ public class Partita {
 
 	public void setGiocatore(Giocatore giocatore) {
 		this.giocatore = giocatore;
-	}	
+	}
+
+	
+	public Stanza getStanzaCorrente() {
+		return this.getLabirinto().getStanzaCorrente();
+	}
 }

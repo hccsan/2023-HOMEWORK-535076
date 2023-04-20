@@ -176,11 +176,10 @@ public class Stanza {
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
 		if (this.attrezzi != null && this.hasAttrezzo(attrezzo.getNome()))
 			for (int i = 0; i < this.numeroAttrezzi;) {
-					if (attrezzi[i].getNome().equals(attrezzo.getNome())) {
+					if (attrezzi[i]!=null && attrezzi[i].getNome().equals(attrezzo.getNome())) {
 						attrezzi[i] = null;
-						this.numeroAttrezzi--;
+						return true;
 					}
-				return true;
 			}
 		return false;
 	}

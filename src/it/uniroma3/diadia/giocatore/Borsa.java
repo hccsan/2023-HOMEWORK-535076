@@ -62,9 +62,9 @@ public class Borsa {
 		Attrezzo a = null;
 		if (attrezzi != null && this.hasAttrezzo(nomeAttrezzo)) {
 			for (int i = 0; i < this.numeroAttrezzi; i++)
-				if (attrezzi[i].getNome().equals(nomeAttrezzo)) {
+				if (attrezzi[i] !=null && attrezzi[i].getNome().equals(nomeAttrezzo)) {
 					a = attrezzi[i];
-					numeroAttrezzi--;
+//					numeroAttrezzi--;
 				}
 		}
 		return a;
