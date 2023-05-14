@@ -16,33 +16,21 @@ public class Partita {
 
 	private Labirinto labirinto;
 	private Giocatore giocatore;
+	private Stanza stanzaCorrente;
 	private boolean finita;
 	
 	public Partita(){
 		this.labirinto = new Labirinto();
+		this.stanzaCorrente = labirinto.getStanzaIniziale();
 		this.giocatore = new Giocatore();
 		this.finita = false;
 	}
-
 	
-	/**
-	 * Restituisce vero se e solo se la partita e' stata vinta
-	 * @return vero se partita vinta
-	 */
-	public boolean vinta() {
-		return this.getLabirinto().getStanzaCorrente()== this.getLabirinto().getStanzaVincente();
-	}
-	
-	public boolean giocatoreIsVivo() {
-		return this.getGiocatore().getCfu()>0;
-	}
-
-	/**
-	 * Restituisce vero se e solo se la partita e' finita
-	 * @return vero se partita finita
-	 */
-	public boolean isFinita() {
-		return finita || vinta() || (this.getGiocatore().getCfu() == 0);
+	public Partita(Labirinto lab) {
+		this.labirinto = lab;
+		this.stanzaCorrente = lab.getStanzaIniziale();
+		this.giocatore = new Giocatore();
+		this.finita = false;
 	}
 
 	/**
@@ -72,8 +60,39 @@ public class Partita {
 		this.giocatore = giocatore;
 	}
 
+	public void setStanzaCorrente(Stanza stanzaCorrente) {
+		this.stanzaCorrente = stanzaCorrente;
+	}
 	
 	public Stanza getStanzaCorrente() {
-		return this.getLabirinto().getStanzaCorrente();
+		return this.stanzaCorrente;
 	}
+	
+	/**
+	 * Restituisce vero se e solo se la partita e' stata vinta
+	 * @return vero se partita vinta
+	 */
+	public boolean vinta() {
+		return this.stanzaCorrente == this.getLabirinto().getStanzaVincente();
+	}
+	
+	public boolean giocatoreIsVivo() {
+		return this.getGiocatore().getCfu()>0;
+	}
+
+	/**
+	 * Restituisce vero se e solo se la partita e' finita
+	 * @return vero se partita finita
+	 */
+	public boolean isFinita() {
+		return finita || vinta() || (this.getGiocatore().getCfu() == 0);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder result = new StringBuilder();
+		result.append("CFU rimanenti: " + this.getGiocatore().getCfu());
+		return result.toString();
+	}
+
 }

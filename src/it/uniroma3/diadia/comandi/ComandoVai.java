@@ -29,7 +29,7 @@ public class ComandoVai implements Comando {
 			io.mostraMessaggio("Direzione innesistente");
 			return;
 		}
-		partita.getLabirinto().setStanzaCorrente(prossimaStanza);
+		partita.setStanzaCorrente(prossimaStanza);
 		io.mostraMessaggio(partita.getStanzaCorrente().getNome());
 		partita.getGiocatore().setCfu(partita.getGiocatore().getCfu()-1);
 	}

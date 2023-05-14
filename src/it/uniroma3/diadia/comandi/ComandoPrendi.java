@@ -14,11 +14,11 @@ public class ComandoPrendi implements Comando {
 		if (nomeAttrezzo == null)
 			io.mostraMessaggio("Quale attrezzo vuoi prendere?");
 		Attrezzo attrezzoDaPrendere = null;
-		attrezzoDaPrendere = partita.getLabirinto().getStanzaCorrente().getAttrezzo(nomeAttrezzo);
+		attrezzoDaPrendere = partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo);
 		if (attrezzoDaPrendere == null) 
 			io.mostraMessaggio("Attrezzo inesistente");
 		else {
-			partita.getLabirinto().getStanzaCorrente().removeAttrezzo(attrezzoDaPrendere);
+			partita.getStanzaCorrente().removeAttrezzo(attrezzoDaPrendere);
 			partita.getGiocatore().getBorsa().addAttrezzo(attrezzoDaPrendere);
 			io.mostraMessaggio("Attrezzo " + nomeAttrezzo + " preso!");
 		}

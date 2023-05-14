@@ -19,7 +19,7 @@ public class ComandoPosa implements Comando {
 			io.mostraMessaggio("Attrezzo inesistente");
 		else {
 			partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
-			partita.getLabirinto().getStanzaCorrente().addAttrezzo(attrezzoDaPosare);
+			partita.getStanzaCorrente().addAttrezzo(attrezzoDaPosare);
 			io.mostraMessaggio("Attrezzo " + nomeAttrezzo + " posato!");
 		}
 	}
