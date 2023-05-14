@@ -23,7 +23,7 @@ public class ComandoPrendiTest {
 		this.comandoPrendi = new ComandoPrendi();
 		this.io = new IOConsole();
 		this.attrezzoTest = new Attrezzo("attrezzoTest", 5);
-		this.partitaTest.getLabirinto().getStanzaCorrente().addAttrezzo(attrezzoTest);
+		this.partitaTest.getStanzaCorrente().addAttrezzo(attrezzoTest);
 	}
 
 	@Test

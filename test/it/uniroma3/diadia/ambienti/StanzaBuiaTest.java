@@ -10,9 +10,9 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 public class StanzaBuiaTest {
 
 	private StanzaBuia stanzaBuiaTest;
-	private static final String DESCRIZIONE_STANZA = "StanzaBuia\n" + 
-			"Uscite: \n" + 
-			"Attrezzi nella stanza: attrezzoTest (1kg) ";
+	private static final String DESCRIZIONE_STANZA = "StanzaBuia" + 
+			"\nUscite: []" + 
+			"\nAttrezzi nella stanza: [attrezzoTest (1kg)]";
 	private Attrezzo attrezzoTest;
 	
 	@Before

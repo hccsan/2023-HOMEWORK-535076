@@ -24,8 +24,8 @@ public class LabirintoTest {
 
 	@Test
 	public void testGetStanzaCorrente() {
-		this.labirintoTest.setStanzaCorrente(stanzaTest);
-		assertEquals(this.stanzaTest.getNome(), this.labirintoTest.getStanzaCorrente().getNome());
+		this.labirintoTest.setStanzaIniziale(stanzaTest);
+		assertEquals(this.stanzaTest.getNome(), this.labirintoTest.getStanzaIniziale().getNome());
 	}
 
 }
