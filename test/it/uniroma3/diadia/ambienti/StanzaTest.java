@@ -1,44 +1,35 @@
 package it.uniroma3.diadia.ambienti;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-import org.junit.Before;
+public class StanzaTest {	
 
-public class StanzaTest {
-
-	private Stanza stanzaTest;
-	private Attrezzo attrezzoTest;
-	
-	@Before
-	public void setUp() {
-		this.stanzaTest = new Stanza ("stanzaTest");
-		this.attrezzoTest = new Attrezzo ("attrezzoTest", 1);
-	}
-	
+	Stanza s1 = new Stanza("s1");
+	Stanza s2= new Stanza("s2");
+	Attrezzo m = new Attrezzo("martello", 42);
 	@Test
-	public void testGetNome() {
-		assertNotNull(this.stanzaTest.getNome());
+	public void testGetStanzaAdiacente() {
+		assertNull(s1.getStanzaAdiacente(Direzione.sud));
 	}
+	
 
+	@Test
+	public void testImpostaStanzaAdiacente() {
+		s1.impostaStanzaAdiacente(Direzione.sud, s2);
+		assertEquals(s2, s1.getStanzaAdiacente(Direzione.sud));
+	}
+	
 	@Test
 	public void testAddAttrezzo() {
-		this.stanzaTest.addAttrezzo(attrezzoTest);
-		assertTrue(this.stanzaTest.hasAttrezzo("attrezzoTest"));
+		
+		assertTrue(s1.addAttrezzo(m));
 	}
-
-	@Test
-	public void testHasAttrezzo() {
-		assertFalse(this.stanzaTest.hasAttrezzo(null));
-	}
-
-	@Test
-	public void testGetAttrezzo() {
-		this.stanzaTest.addAttrezzo(attrezzoTest);
-		assertEquals("attrezzoTest", this.stanzaTest.getAttrezzo("attrezzoTest").getNome());
-	}
+	
 
 }

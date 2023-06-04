@@ -1,48 +1,49 @@
 package it.uniroma3.diadia;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
+import java.io.FileNotFoundException;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class PartitaTest {
-	
-	private Partita partitaTest;
-//	private Stanza stanzaTest;
-	
-	
-	@Before
-	public void setUp() {
-		this.partitaTest = new Partita();
-//		this.stanzaTest = new Stanza("stanzaTest");
-	}
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.Stanza;
 
-//	@Test
-//	public void testGetStanzaVincente() {
-//		assertNotNull(this.partitaTest.getStanzaVincente());
-//	}
-//
-//	@Test
-//	public void testGetStanzaCorrente() {
-//		this.partitaTest.setStanzaCorrente(stanzaTest);
-//		assertEquals("stanzaTest", this.partitaTest.getStanzaCorrente().getNome());
-//	}
+public class PartitaTest {
+
+	Labirinto labirinto;
+	Partita p;
+	Stanza s;
+
+	@Before
+	public void setUp() throws FileNotFoundException, FormatoFileNonValidoException {
+		 labirinto = Labirinto.newBuilder("labirinto2.txt").getLabirinto();
+//				.addStanzaIniziale("Atrio")
+//				.addAttrezzo("martello", 3)
+//				.addStanzaVincente("Biblioteca")
+//				.addAdiacenza("Atrio", "Biblioteca", "nord")
+//				.getLabirinto();
+		 p = new Partita(labirinto);
+		 s = new Stanza("Stanza");
+	}
+	
+	@Test
+	public void testGetStanzaVincente() {
+		assertEquals("Biblioteca", p.getLabirinto().getStanzaVincente().getNome());
+	}
 
 	@Test
-	public void testVinta() {
-		assertFalse(this.partitaTest.vinta());
+	public void testSetStanzaCorrente() {
+		p.getLabirinto().setStanzaCorrente(s);
+		assertEquals(s, p.getLabirinto().getStanzaCorrente());
 	}
 
-//	@Test
-//	public void testIsFinita() {
-//		this.partitaTest.setCfu(0);
-//		assertTrue(this.partitaTest.isFinita());
-//	}
-//
-//	@Test
-//	public void testGetCfu() {
-//		this.partitaTest.setCfu(0);
-//		assertNotEquals(10, this.partitaTest.getCfu());
-//	}
-
+	@Test
+	public void testIsFinita() {
+		
+		assertFalse(p.isFinita());
+	}
+	
 }
