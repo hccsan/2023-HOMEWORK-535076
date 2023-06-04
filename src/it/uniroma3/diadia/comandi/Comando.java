@@ -20,7 +20,7 @@ public interface Comando {
 	/**
 	 * esecuzioone del comando
 	 */
-	public void esegui(Partita partita, IO io);
+	abstract public void esegui(Partita partita);
 	
 	/*
 	 * set parametro del comando
@@ -30,5 +30,7 @@ public interface Comando {
 	public String getNome();
 	
 	public String getParametro();
+	
+	public void setIO(IO io);
 	
 }
